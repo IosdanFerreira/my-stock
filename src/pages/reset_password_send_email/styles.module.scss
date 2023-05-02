@@ -1,0 +1,100 @@
+@import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
+
+.reset__password__container {
+    height: 100vh
+}
+
+.reset__password__col {
+    @include flex__center();
+    height: 90vh;
+
+    .reset__password__content{
+        width: 600px;
+        background: $bg-100;
+        border-radius: 10px;
+        padding: 35px 20px;
+        
+
+        .reset__password__title {
+            text-align: center;
+            margin-bottom: 26px;
+
+            h6{
+                font-weight: 500;
+                opacity: 0.7;
+                text-transform: uppercase;
+                font-size: 14px;
+            }
+
+            h5 {
+                font-weight: bold;
+            }
+
+            p {
+                font-size: 14px;
+                margin-top: 20px;
+            }
+        }
+
+        .msg__error{
+            display: block;
+            color: $error;
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        .btn_reset__password {
+            all: unset;
+            color: $text-white;
+            background: $primary-100;
+            width: 100%;
+            border-radius: 5px;
+            text-align: center;
+            padding: 8px 0;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: .2s ease;
+            cursor: pointer;
+
+            &:hover{
+                background: $primary-100-hover
+            }
+        }
+
+        .link_reset__password {
+            display: block;
+            color: $text-white;
+            background: $primary-100;
+            width: 100%;
+            border-radius: 5px;
+            text-align: center;
+            padding: 8px 0;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: .2s ease;
+            cursor: pointer;
+
+            &:hover{
+                background: $primary-100-hover
+            }
+        }
+    }
+}
+
+.logo {
+    @include flex__center();
+    padding: 20px;
+
+    svg{
+        color: $primary-100;
+        font-size: 20px;
+        margin-right: 5px;
+    }
+
+    h1 {
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+}

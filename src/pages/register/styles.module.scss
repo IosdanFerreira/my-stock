@@ -1,0 +1,76 @@
+@import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
+
+.register__container {
+    height: 100vh
+}
+
+.register__col {
+    @include flex__center();
+    height: 100vh;
+
+    .register__content{
+        width: 600px;
+        background: $bg-100;
+        border-radius: 10px;
+        padding: 35px 20px;
+
+        .register__title {
+            text-align: center;
+            margin-bottom: 26px;
+
+            h6{
+                font-weight: 500;
+                opacity: 0.7;
+                text-transform: uppercase;
+                font-size: 14px;
+            }
+
+            h5 {
+                font-weight: bold;
+            }
+        }
+
+        .msg__error{
+            display: block;
+            color: $error;
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        .btn_register {
+            all: unset;
+            color: $text-white;
+            background: $primary-100;
+            width: 100%;
+            border-radius: 5px;
+            text-align: center;
+            padding: 8px 0;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: .2s ease;
+            cursor: pointer;
+
+            &:hover{
+                background: $primary-100-hover
+            }
+        }
+    }
+}
+
+.register__logo {
+    @include flex__center();
+    padding: 20px;
+
+    svg{
+        color: $primary-100;
+        font-size: 40px;
+        margin-right: 5px;
+    }
+
+    h1 {
+        font-size: 40px;
+        font-weight: bolder;
+    text-transform: uppercase;
+    }
+}

@@ -1,0 +1,50 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+* {
+  font-family: $font_primary;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $bg-100;
+}
+
+main {
+  background-color: $bg-100;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font_secondary !important;
+  color: $text-100;
+  margin: 0 !important;
+}
+
+p {
+  color: $text-100;
+}
+
+input {
+  -webkit-box-shadow: 0 0 0px 1000px $bg-200 inset !important;
+  -webkit-text-fill-color: $text-100 !important;
+}
+
+button {
+  cursor: pointer !important;
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+  }
+}

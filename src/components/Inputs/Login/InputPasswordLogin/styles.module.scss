@@ -1,0 +1,55 @@
+@import "../../../../scss/variables.scss";
+@import "../../../../scss/mixins.scss";
+
+.input__container {
+  width: 100%;
+
+  span {
+    display: block;
+    color: $text-100;
+    font-size: 15px;
+    margin-bottom: 3px;
+    font-weight: lighter;
+  }
+
+  .input__flex__container {
+    @include flex__center();
+    justify-content: left;
+
+    input {
+      all: unset;
+      border: 1px solid $accent-200;
+      border-right: 0;
+      border-bottom-left-radius: 5px;
+      border-top-left-radius: 5px;
+      color: $text-100;
+      width: 90%;
+      height: 20px;
+      padding: 8px 10px;
+      font-weight: lighter;
+      background-color: transparent;
+      font-size: 14px;
+
+      &:focus {
+        border: 1px solid $primary-100-hover;
+      }
+
+      &::placeholder {
+        font-size: 14px;
+      }
+    }
+    .btn__show__password {
+      all: unset;
+      @include flex__center();
+      border: 1px solid $accent-200;
+      background-color: $bg-200;
+      padding: 8px 10px;
+      height: 20px;
+      color: $text-100;
+      font-size: 25px;
+      width: 6%;
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+  }
+}

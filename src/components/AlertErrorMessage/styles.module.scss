@@ -1,0 +1,10 @@
+@import '../../scss/variables.scss';
+
+.alert {
+    padding: 5px 10px;
+    background: $bg-100;
+    color: $error;
+    border-color: $error;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
