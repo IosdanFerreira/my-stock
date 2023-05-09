@@ -17,7 +17,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 // components
-import InputTextLogin from '@/components/Inputs/Login/InputTextLogin';
+import InputTextLogin from '@/components/Inputs/InputTextLogin';
 import AlertErrorMessage from '@/components/AlertErrorMessage';
 
 // firebase auth

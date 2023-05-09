@@ -1,0 +1,48 @@
+@import "../../scss/variables.scss";
+@import "../../scss/mixins.scss";
+
+.register__profit__container {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px 1px rgba(214, 214, 214, 0.7450980392);
+  margin-top: 50px;
+  padding: 20px;
+
+  h2 {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #474747 !important;
+    margin-bottom: 25px !important;
+  }
+
+  .msg__error {
+    display: block;
+    color: $error;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  .btn__register__value {
+    all: unset;
+    color: $text-white;
+    background: $primary-100;
+    width: 100px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 8px 13px;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: 0.2s ease;
+    cursor: pointer;
+    margin: 0 10px;
+
+    &:hover {
+      background: $primary-100-hover;
+    }
+  }
+}
+
+.register__profit__table__container {
+  margin-bottom: 50px;
+}

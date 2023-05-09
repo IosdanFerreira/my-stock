@@ -1,0 +1,22 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.sistem__header__container {
+    background: #fff;
+    padding: 10px 0;
+}
+
+.sistem__header__content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 30px;
+
+    .user__name {
+        color: $text-100
+    }
+}
+
+.btn__logout {
+    all: unset;
+}

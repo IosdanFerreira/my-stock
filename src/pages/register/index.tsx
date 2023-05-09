@@ -16,8 +16,8 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 // components
-import InputTextLogin from '@/components/Inputs/Login/InputTextLogin';
-import InputPasswordLogin from '@/components/Inputs/Login/InputPasswordLogin';
+import InputTextLogin from '@/components/Inputs/InputTextLogin';
+import InputPasswordLogin from '@/components/Inputs/InputPasswordLogin';
 import AlertErrorMessage from '@/components/AlertErrorMessage';
 
 // firebase auth
@@ -105,11 +105,12 @@ export default function Register() {
   
     if(user) {
       await setDoc(doc(db, 'users', `${user.uid}`), {
-        name: user.displayName,
+        nome: user.displayName,
         email: user.email,
-        clients: [],
-        services: [],
-        os: []
+        clientes: [],
+        servicos: [],
+        entradas: [],
+        saidas: [],
       });
     }
   };
@@ -128,8 +129,6 @@ export default function Register() {
       setErrorAlertMessage(firebaseErrorsTranslate(error.code));
     }
   };
-
-
 
   const handleSubmitForm = (values: IFormValues) => {
     createNewUSer(values);

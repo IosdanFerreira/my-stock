@@ -1,4 +1,4 @@
-@import "../../../../scss/variables.scss";
+@import "../../../scss/variables.scss";
 
 .input__container {
   width: 100%;
@@ -15,8 +15,8 @@
     all: unset;
     border: 1px solid $accent-200;
     border-radius: 5px;
-    color: $text-100;
-    width: 95%;
+    color: $text-200;
+    width: -webkit-fill-available;
     padding: 8px 10px;
     font-weight: lighter;
     background-color: transparent;
@@ -28,6 +28,7 @@
 
     &::placeholder {
       font-size: 14px;
+      color: #858585 !important;
     }
   }
 }

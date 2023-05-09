@@ -1,0 +1,12 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.col__side__menu {
+    padding: 0;
+}
+.col__sistem_children {
+    padding: 0;
+    height: 100vh;
+    background: $bg-100;
+    overflow-y: scroll;
+}

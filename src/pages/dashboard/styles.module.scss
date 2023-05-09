@@ -1,2 +1,73 @@
 @import '../../scss/variables.scss';
 @import '../../scss/mixins.scss';
+
+.dashboard__container {
+    
+    padding-top: 30px;
+}
+
+.info__card__container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px #d6d6d6be;
+
+    .card__title {
+        @include flex__center();
+        padding: 10px;
+        border-bottom: 4px solid #ebebeb;;
+
+        h2 {
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: $text-200 !important;
+        }
+
+        .profit {
+            color: $text-200;
+            font-size: 20px;
+        }
+    }
+
+    .card__content {
+        @include flex__center();
+        margin-top: 20px;
+        padding: 20px;
+        padding-top: 0;
+
+        h3 {
+            color: $text-200;
+        }
+
+        svg {
+            align-self: flex-start;
+            font-size: 20px;
+            margin-left: 10px;
+        }
+
+        .profit__value {
+            color: $success;
+        }
+
+        .profit {
+            color: $success;
+        }
+
+        .losses__value {
+            color: $error;
+        }
+
+        .losses {
+            color: $error;
+        }
+
+        .total__value {
+            color: $primary-200;
+        }
+
+        .total {
+            color: $primary-200;
+        }
+    }
+
+}

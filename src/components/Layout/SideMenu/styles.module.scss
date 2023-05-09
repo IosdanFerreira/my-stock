@@ -1,0 +1,80 @@
+@import "./../../../scss/variables.scss";
+@import "./../../../scss/mixins.scss";
+
+.menu__container {
+  height: 100vh;
+  background: $secondary-200;
+  overflow: hidden
+}
+
+.logo {
+  @include flex__center();
+  padding: 20px;
+  margin-bottom: 10px;
+
+  svg {
+    color: $primary-100-hover;
+    font-size: 30px;
+    margin-right: 5px;
+  }
+
+  h1 {
+    font-size: 30px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    color: #fff !important;
+  }
+}
+
+.menu__options {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li a {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 10px 15px 10px 20px;
+      color: #dbdbdb;
+      font-weight: 400;
+      border-left: 4px solid transparent;
+      transition: 0.2s ease;
+
+      &:hover {
+        background: $secondary-100;
+        border-color: $primary-100-hover !important;
+        padding-left: 27px;
+      }
+
+      svg {
+        margin-right: 5px;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.btn__logout {
+  all: unset;
+  display: block;
+  width: 100%;
+  padding: 10px 15px 10px 20px;
+  color: #dbdbdb;
+  font-weight: 400;
+  border-left: 4px solid transparent;
+  transition: 0.2s ease;
+
+  &:hover {
+    background: $secondary-100;
+    border-color: $primary-100-hover !important;
+    padding-left: 27px;
+  }
+
+  svg {
+    margin-right: 5px;
+    font-size: 18px;
+  }
+
+}

@@ -1,16 +1,19 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import { GetServerSideProps } from 'next';
+import styles from './styles.module.scss';
 
-// redux
-import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
-import { logout } from '@/redux/user/slice';
+// structures
+import { Container, Row, Col } from 'react-bootstrap';
 
 // Firebase
 import { auth } from '@/services/firebase';
-import { signOut  } from 'firebase/auth';
 import Cookies from 'cookie';
-import CookieServer from 'js-cookie';
+
+// components
+import SistemLayout from '@/components/Layout/SistemLayout';
+
+// icons
+import { BiSortDown, BiSortUp, BiBarChart } from 'react-icons/bi';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;
@@ -35,31 +38,53 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-
 export default function Dashboard() {
-  
-  // Declaração das variáveis utilizadas
-  const dispatch = useAppDispatch();
-  const router = useRouter();
-  
-  
-  const logOutUser = () => {
-    signOut(auth).then(() => {
-
-      CookieServer.remove('user_auth');
-      dispatch(logout());
-      router.push('/');
-
-    }).catch((error) => {
-      console.log(`Erro ao deslogar usuário ${error}`);
-    });
-  };
-
   return (
     <>
-  
-      <div>Dashboard</div>
-      <button type='button' onClick={logOutUser} >Sair</button>
+      <SistemLayout>
+        <main className={styles.dashboard__container}>
+          <Container>
+            <Row>
+
+              <Col sm="4">
+                <div className={`${styles.info__card__container} ${styles.info__card__profit}`}>
+                  <div className={styles.card__title}>
+                    <h2>Entradas</h2>
+                  </div>
+                  <div className={styles.card__content}>
+                    <h3 className={styles.profit__value}>+ R$ 20.000,00</h3>
+                    <BiSortUp className={styles.profit} /> 
+                  </div>
+                </div>
+              </Col>
+
+              <Col sm="4">
+                <div className={`${styles.info__card__container} ${styles.info__card__losses}`}>
+                  <div className={styles.card__title}>
+                    <h2>Saídas</h2>
+                  </div>
+                  <div className={styles.card__content}>
+                    <h3 className={styles.losses__value}>- R$ 20.000,00</h3>
+                    <BiSortDown className={styles.losses} />
+                  </div>
+                </div>
+              </Col>
+
+              <Col sm="4">
+                <div className={`${styles.info__card__container} ${styles.info__card__losses}`}>
+                  <div className={styles.card__title}>
+                    <h2>Total</h2>
+                  </div>
+                  <div className={styles.card__content}>
+                    <h3 className={styles.total__value}>- R$ 20.000,00</h3>
+                    <BiBarChart className={styles.total} />
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </main>
+      </SistemLayout>
     </>
   );
 }

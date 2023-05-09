@@ -29,9 +29,6 @@ export default function App({ Component, pageProps }: AppProps) {
   const handleStart = (url: any) => setIsLoading(true);
   const handleComplete = (url: any) => setIsLoading(false);
 
-  console.log(isLoading);
-
-  
   useEffect(() => {
 
     router.events.on('routeChangeStart', handleStart);

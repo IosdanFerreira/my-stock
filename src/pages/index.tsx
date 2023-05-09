@@ -17,8 +17,8 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 // components
-import InputTextLogin from '@/components/Inputs/Login/InputTextLogin';
-import InputPasswordLogin from '@/components/Inputs/Login/InputPasswordLogin';
+import InputTextLogin from '@/components/Inputs/InputTextLogin';
+import InputPasswordLogin from '@/components/Inputs/InputPasswordLogin';
 import AlertErrorMessage from '@/components/AlertErrorMessage';
 
 // redux
