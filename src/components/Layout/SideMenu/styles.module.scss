@@ -78,3 +78,9 @@
   }
 
 }
+
+@media only screen and (max-width: 556px) {
+  .menu__container {
+    display: none;
+  }
+}

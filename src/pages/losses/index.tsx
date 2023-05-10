@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
-import { useRouter } from 'next/router';
 import styles from './styles.module.scss';
 
 // structures
 import { Container, Row, Col, Form } from 'react-bootstrap';
 
 // Firebase
-import { auth } from '@/services/firebase';
+import { auth, db } from '@/services/firebase';
 import Cookies from 'cookie';
 
 // components
@@ -15,11 +14,13 @@ import SistemLayout from '@/components/Layout/SistemLayout';
 import InputTextLogin from '@/components/Inputs/InputTextLogin';
 
 // Form
-import { Formik } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 
-// redux
-import { useAppDispatch } from '@/hooks/reduxHooks';
+// antd
+import { message } from 'antd';
+import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
+import { LossesDataTable } from '@/components/LossesDataTable';
 
 interface IFormValues {
     client: string;
@@ -52,10 +53,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 export default function Losses() {
 
-  // // Declaração das variáveis utilizadas
-  const dispatch = useAppDispatch();
-  const router = useRouter();
-
   // Valores iniciais do formulário
   const initialValues: IFormValues = {
     client: '',
@@ -87,14 +84,80 @@ export default function Losses() {
     }
   };
 
+  const [messageApi, contextHolder] = message.useMessage();
+  const userId = auth.currentUser?.uid;
+
+  const dataFromProfit = async (values: IFormValues) => {
+
+    const date = new Date();
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear().toString();
+    const formatedDate = `${day}/${month}/${year}`;
+
+    if(userId) {
+      const userRef = doc(db, `users/${userId}`);
+      await updateDoc(userRef, {
+        saidas: arrayUnion({
+          client: values.client,
+          value: values.value,
+          description: values.description,
+          date: formatedDate,
+        }),
+      });
+  
+      const success = () => {
+        messageApi.open({
+          type: 'success',
+          content: 'Registro de saída criado com sucesso!',
+        });
+      };
+
+      success();
+      
+    }};
+
+  // pega os dados das saidas para exibir na tabela
+  const [lossesData, setLossesData] = useState([]);
+
+  useEffect(() => {
+    const docRef = doc(db, `users/${userId}`);
+
+    const getdoc = async () => {
+      try {
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          const saidas = data?.saidas || [];
+
+          setLossesData(saidas);
+          
+        } else {
+          console.log('Documento não encontrado.');
+        }
+      } catch (error) {
+        console.log('Ocorreu um erro:', error);
+      }
+    };
+
+    getdoc();
+    
+  }, [lossesData]);
+
   // Função de login aplicada ao formulário
-  const handleSubmitForm = (values: IFormValues):void => {
-    alert(JSON.stringify(values));
+  const handleSubmitForm = (values: IFormValues, { resetForm }: FormikHelpers<IFormValues>):void => {
+    dataFromProfit(values);
+    setTimeout(() => {
+      resetForm();
+    }, 500);
+    setSubmted(false);
   };
 
   return (
     <>
       <SistemLayout>
+        {contextHolder}
         <main className={styles.dashboard__container}>
           <Container>
             <Row>
@@ -177,6 +240,19 @@ export default function Losses() {
               </Col>
             </Row>
           </Container>
+
+          <Container>
+            <Row>
+              <Col sm="12">
+                <div className={`${styles.register__profit__container} ${styles.register__profit__table__container}`}>
+                  <h2>Tabela das entrada</h2>
+
+                  <LossesDataTable data={lossesData} />
+                </div>
+              </Col>
+            </Row>
+          </Container>
+
         </main>
       </SistemLayout>
     </>

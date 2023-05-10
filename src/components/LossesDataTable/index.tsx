@@ -17,7 +17,7 @@ interface ITableProps {
   data: Array<DataType>;
 }
 
-export function ProfitDataTable({data}: ITableProps) {
+export function LossesDataTable({data}: ITableProps) {
 
   // Define a quantidade de linhas da tabela baseado no altura da tela
   const [height, setHeight] = useState<number>(0);
@@ -53,8 +53,8 @@ export function ProfitDataTable({data}: ITableProps) {
 
         if (formatedValue > 0) {
           return (
-            <span className={styles.high__value}>
-             R$ {formatedValue.toFixed(2).replace('.', ',')}
+            <span className={styles.low__value}>
+             R$ - {formatedValue.toFixed(2).replace('.', ',')}
             </span>
           );
         }

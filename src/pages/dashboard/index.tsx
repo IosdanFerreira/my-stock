@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import styles from './styles.module.scss';
 
@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 import { Container, Row, Col } from 'react-bootstrap';
 
 // Firebase
-import { auth } from '@/services/firebase';
+import { auth, db } from '@/services/firebase';
 import Cookies from 'cookie';
 
 // components
@@ -14,6 +14,7 @@ import SistemLayout from '@/components/Layout/SistemLayout';
 
 // icons
 import { BiSortDown, BiSortUp, BiBarChart } from 'react-icons/bi';
+import { doc, getDoc } from 'firebase/firestore';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;
@@ -38,7 +39,47 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
+interface IDataProps {
+  client: string;
+  value: number;
+  description: string;
+  date: string;
+}
+
 export default function Dashboard() {
+
+  const userId = auth.currentUser?.uid;
+
+  // pega os dados das entradas para exibir na tabela
+  const [lossesData, setLossesData] = useState([]);
+
+  useEffect(() => {
+    const docRef = doc(db, `users/${userId}`);
+
+    const getdoc = async () => {
+      try {
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          const saidas = data?.saidas || [];
+
+          setLossesData(saidas);
+        
+        } else {
+          console.log('Documento não encontrado.');
+        }
+      } catch (error) {
+        console.log('Ocorreu um erro:', error);
+      }
+    };
+
+    getdoc();
+  
+  }, []);
+
+  console.log(lossesData);
+
   return (
     <>
       <SistemLayout>

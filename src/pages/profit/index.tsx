@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
-import { useRouter } from 'next/router';
 import styles from './styles.module.scss';
 
 // structures
@@ -23,9 +22,6 @@ import { ProfitDataTable } from '@/components/ProfitDataTable';
 // Form
 import { Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
-
-// redux
-import { useAppDispatch } from '@/hooks/reduxHooks';
 
 interface IFormValues {
     client: string;
@@ -58,10 +54,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 export default function Profit() {
 
-  // // Declaração das variáveis utilizadas
-  const dispatch = useAppDispatch();
-  const router = useRouter();
-
   // Valores iniciais do formulário
   const initialValues: IFormValues = {
     client: '',
@@ -80,8 +72,6 @@ export default function Profit() {
   // Exibe as mensagens de erro do formulário
   const [showErrorMessage, setShowErrorMessage] = useState(false);
   const [submted, setSubmted] = useState(false);
-
-  const [ErrorAlertMessage, setErrorAlertMessage] = useState('');
 
   const handleShowErrorMessage = () => {
     if (!submted) {
@@ -160,6 +150,7 @@ export default function Profit() {
     setTimeout(() => {
       resetForm();
     }, 500);
+    setSubmted(false);
   };  
 
   return (
@@ -185,7 +176,6 @@ export default function Profit() {
                       handleChange,
                       handleBlur,
                       handleSubmit,
-                      resetForm
                     }) => (
                       <form onSubmit={handleSubmit} className='row'>
 
