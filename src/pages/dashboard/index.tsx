@@ -15,6 +15,7 @@ import SistemLayout from '@/components/Layout/SistemLayout';
 // icons
 import { BiSortDown, BiSortUp, BiBarChart } from 'react-icons/bi';
 import { doc, getDoc } from 'firebase/firestore';
+import { Console } from 'console';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;
@@ -41,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 interface IDataProps {
   client: string;
-  value: number;
+  value: string;
   description: string;
   date: string;
 }
@@ -50,8 +51,8 @@ export default function Dashboard() {
 
   const userId = auth.currentUser?.uid;
 
-  // pega os dados das entradas para exibir na tabela
-  const [lossesData, setLossesData] = useState([]);
+  // pega os dados das saídas para exibir
+  const [lossesData, setLossesData] = useState<IDataProps[]>([]);
 
   useEffect(() => {
     const docRef = doc(db, `users/${userId}`);
@@ -78,7 +79,39 @@ export default function Dashboard() {
   
   }, []);
 
-  console.log(lossesData);
+  const totalLosses = lossesData.reduce((acc, curr) => acc + parseFloat(curr.value.replace(',', '')), 0);
+
+  // pega os dados das saídas para exibir
+  const [profitData, setProfitData] = useState<IDataProps[]>([]);
+
+  useEffect(() => {
+    const docRef = doc(db, `users/${userId}`);
+
+    const getdoc = async () => {
+      try {
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          const entradas = data?.entradas || [];
+
+          setProfitData(entradas);
+        
+        } else {
+          console.log('Documento não encontrado.');
+        }
+      } catch (error) {
+        console.log('Ocorreu um erro:', error);
+      }
+    };
+
+    getdoc();
+  
+  }, []);
+
+  const totalProfit = profitData.reduce((acc, curr) => acc + parseFloat(curr.value.replace(',', '')), 0);
+
+  const totalValue = totalProfit - totalLosses;
 
   return (
     <>
@@ -93,7 +126,7 @@ export default function Dashboard() {
                     <h2>Entradas</h2>
                   </div>
                   <div className={styles.card__content}>
-                    <h3 className={styles.profit__value}>+ R$ 20.000,00</h3>
+                    <h3 className={styles.profit__value}>R$ + {(totalProfit / 100).toFixed(2).replace('.', ',')}</h3>
                     <BiSortUp className={styles.profit} /> 
                   </div>
                 </div>
@@ -105,7 +138,7 @@ export default function Dashboard() {
                     <h2>Saídas</h2>
                   </div>
                   <div className={styles.card__content}>
-                    <h3 className={styles.losses__value}>- R$ 20.000,00</h3>
+                    <h3 className={styles.losses__value}>R$ - {(totalLosses / 100).toFixed(2).replace('.', ',')}</h3>
                     <BiSortDown className={styles.losses} />
                   </div>
                 </div>
@@ -117,7 +150,7 @@ export default function Dashboard() {
                     <h2>Total</h2>
                   </div>
                   <div className={styles.card__content}>
-                    <h3 className={styles.total__value}>- R$ 20.000,00</h3>
+                    <h3 className={styles.total__value}>R$ {(totalValue / 100).toFixed(2).replace('.', ',')}</h3>
                     <BiBarChart className={styles.total} />
                   </div>
                 </div>

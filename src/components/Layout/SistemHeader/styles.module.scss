@@ -20,3 +20,47 @@
 .btn__logout {
     all: unset;
 }
+
+.btn__open__menu__mobile {
+    display: none;
+}
+
+.logo {
+    display: none;
+}
+
+
+
+@media only screen and (max-width: 556px) {
+
+    .sistem__header__content {
+        justify-content: space-around;
+    }
+
+    .btn__open__menu__mobile {
+        all: unset;
+        @include flex__center();
+        padding: 3px 6px;
+        font-size: 25px;
+
+    }
+
+    .logo {
+        @include flex__center();
+      
+        svg {
+          color: $primary-100-hover;
+          font-size: 20px;
+          margin-right: 5px;
+        }
+      
+        h1 {
+          font-size: 20px;
+          font-weight: bolder;
+          text-transform: uppercase;
+          color: $text-100 !important;
+        }
+      }
+
+  }
+  

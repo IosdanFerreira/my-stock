@@ -71,3 +71,17 @@
     }
 
 }
+
+@media only screen and (max-width: 820px) {
+    .card__content {
+        @include flex__center();
+        margin-top: 20px;
+        padding: 20px;
+        padding-top: 0;
+        margin-bottom: 25px;
+
+        h3 {
+            font-size: 19px;
+        }
+    }
+}
