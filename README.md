@@ -1,38 +1,134 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+![Logo of the project](https://github.com/Lucasdfg07/Spotify_clone/blob/master/app/javascript/assets/images/logo.png)
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## SpotCode
+This application is an app clone of spotify made with Ruby (Back end) and ReactJS (Front end) to play musics, see artist's album, their music and made your day more musicable! Did on weekcode of OneBitCode.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Technology 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Here are the technologies used in this project.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+* Ruby version  2.5.1
+* Rails version 6.0.2
+* SQLite3
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Services Used
 
-## Learn More
+* Github
 
-To learn more about Next.js, take a look at the following resources:
+## Ruby Gems
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Devise
+* Bootstrap
+* JQuery-rails
+* Serviceworker Rails
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Getting started
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* Dependency
+  - Ruby  
+  - Rails
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* To create and build your database accord of the project.
+  - rake db:create db:migrate
+  
+* To create the previous files to use on the project, on the database.
+  - rake db:seed
+  
+* To install the gems.
+  - bundle install
+  
+* To run the project.
+  - rails s
+
+## How to use
+
+### 1 - When you access the project, you will see this initial page.
+
+![Homepage image](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/17.png)
+
+### 2 - You can Login in the system if you have an account registered.
+
+![Login](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/16.png)
+
+### 3 - Or simply create your account.
+
+![Sign up](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/15.png)
+
+### 4 - This is the Dashboard!
+
+![Dashboard](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/14.png)
+![Dashboard](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/13.png)
+
+### 5 - You can see more of an album clicking above it.
+
+![Dashboard](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/12.png)
+![Dashboard](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/11.png)
+
+### 6 - You can also search a music, artist or an album accord of it's category!!
+
+![Search tab](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/10.png)
+
+### 7 - Clicking on the category, will return:
+
+  #### 7.1 - It's albums registered.
+
+![Search Albums tab](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/9.png)
+
+  #### 7.2 - It's artists.
+
+![Search Artists tab](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/8.png)
+
+  #### 7.3 - It's musics.
+
+![Search Musics tab](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/7.png)
+
+### 8 - Clicking on the artist, you can see it's perfil like the image above.
+
+![Artist show](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/6.png)
+![Artist show](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/5.png)
+![Artist show](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/4.png)
+
+### 9 - You can access the favorite's tab too like:
+  #### 9.1 - Favorite Albums.
+![Artist show](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/3.png)
+
+  #### 9.2 - Favorite Artists.
+![Artist show](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/2.png)
+
+  #### 9.3 - Favorite Musics.
+![Artist show](https://github.com/Lucasdfg07/Spotify_clone/blob/master/public/readme_photos/1.png)
+
+
+## Features
+
+The main features of the application are:
+ - Listen Songs.
+ - Favorite Albums.
+ - Favorite Artists.
+ - Favorite Musics.
+ - See Album's perfil.
+ - See Artist's perfil.
+ - Search albums, musics and artists.
+
+
+## Links
+  - Repository: https://github.com/Lucasdfg07/Spotify_clone
+    - In case of sensitive bugs like security vulnerabilities, please contact
+      Lucassiqueiraferandes07@gmail.com directly instead of using issue tracker. We value your effort
+      to improve the security and privacy of this project!
+
+  ## Versioning
+
+  1.0.0.0
+
+
+  ## Authors
+
+  * **Lucas Siqueira Fernandes** 
+
+  Please follow github and join us!
+  Thanks to visiting me and good coding!
