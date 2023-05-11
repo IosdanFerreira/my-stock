@@ -53,7 +53,7 @@ export default function Dashboard() {
 
   const {user} = useAppSelector((state) => state.userReducer);
 
-  const userId = user.uid;
+  const userId = user?.uid;
 
   // pega os dados das saídas para exibir
   const [lossesData, setLossesData] = useState<IDataProps[]>([]);

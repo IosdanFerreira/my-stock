@@ -88,7 +88,7 @@ export default function Losses() {
   const [messageApi, contextHolder] = message.useMessage();
   const {user} = useAppSelector((state) => state.userReducer);
 
-  const userId = user.uid;
+  const userId = user?.uid;
 
   const dataFromProfit = async (values: IFormValues) => {
 

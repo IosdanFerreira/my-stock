@@ -42,8 +42,8 @@ export default function SistemHeader() {
     signOut(auth)
       .then(() => {
         CookieServer.remove('user_auth');
-        dispatch(logout());
         router.push('/');
+        dispatch(logout());
       })
       .catch((error) => {
         console.log(`Erro ao deslogar usuário ${error}`);
