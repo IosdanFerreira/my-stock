@@ -45,7 +45,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Provider store={store}>
-        <PersistGate persistor={persistor} loading={<Loader />}>
+        <PersistGate persistor={persistor} loading={null}>
           {isLoading && <MiniLoading />}
           <GeneralContainer>
             <Component {...pageProps} />

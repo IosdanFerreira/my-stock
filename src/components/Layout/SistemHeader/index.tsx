@@ -82,7 +82,7 @@ export default function SistemHeader() {
                 <Dropdown menu={{ items }}>
                   <a onClick={(e) => e.preventDefault()}>
                     <Space className={styles.user__name}>
-                      {user.displayName}
+                      {user?.displayName}
                       <FiChevronDown />
                     </Space>
                   </a>
