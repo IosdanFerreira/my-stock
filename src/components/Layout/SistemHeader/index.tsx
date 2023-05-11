@@ -29,10 +29,14 @@ import CookieServer from 'js-cookie';
 import { logout } from '@/redux/user/slice';
 import SideMenuMobile from '../SideMenuMobile';
 
+// redux
+import { useAppSelector } from '@/hooks/reduxHooks';
+
 export default function SistemHeader() {
   // Declaração das variáveis utilizadas
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const {user} = useAppSelector((state) => state.userReducer);
 
   const logOutUser = () => {
     signOut(auth)
@@ -78,7 +82,7 @@ export default function SistemHeader() {
                 <Dropdown menu={{ items }}>
                   <a onClick={(e) => e.preventDefault()}>
                     <Space className={styles.user__name}>
-                      {auth.currentUser?.displayName}
+                      {user.displayName}
                       <FiChevronDown />
                     </Space>
                   </a>

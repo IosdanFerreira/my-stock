@@ -77,7 +77,7 @@ export default function Dashboard() {
 
     getdoc();
   
-  }, []);
+  }, [lossesData]);
 
   const totalLosses = lossesData.reduce((acc, curr) => acc + parseFloat(curr.value.replace(',', '')), 0);
 
@@ -107,7 +107,7 @@ export default function Dashboard() {
 
     getdoc();
   
-  }, []);
+  }, [profitData]);
 
   const totalProfit = profitData.reduce((acc, curr) => acc + parseFloat(curr.value.replace(',', '')), 0);
 
