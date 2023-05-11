@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import styles from './styles.module.scss';
 
@@ -63,7 +63,7 @@ export default function Dashboard() {
 
         if (docSnap.exists()) {
           const data = docSnap.data();
-          const saidas = data?.saidas || [];
+          const saidas = await data?.saidas || [];
 
           setLossesData(saidas);
         
@@ -93,7 +93,7 @@ export default function Dashboard() {
 
         if (docSnap.exists()) {
           const data = docSnap.data();
-          const entradas = data?.entradas || [];
+          const entradas = await data?.entradas || [];
 
           setProfitData(entradas);
         
