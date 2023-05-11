@@ -16,6 +16,8 @@ import SistemLayout from '@/components/Layout/SistemLayout';
 import { BiSortDown, BiSortUp, BiBarChart } from 'react-icons/bi';
 import { doc, getDoc } from 'firebase/firestore';
 import { Console } from 'console';
+import { useAppSelector } from '@/hooks/reduxHooks';
+import { User } from 'firebase/auth';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;
@@ -49,7 +51,9 @@ interface IDataProps {
 
 export default function Dashboard() {
 
-  const userId = auth.currentUser?.uid;
+  const {user} = useAppSelector((state) => state.userReducer);
+
+  const userId = user.uid;
 
   // pega os dados das saídas para exibir
   const [lossesData, setLossesData] = useState<IDataProps[]>([]);

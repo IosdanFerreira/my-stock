@@ -21,6 +21,7 @@ import * as Yup from 'yup';
 import { message } from 'antd';
 import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { LossesDataTable } from '@/components/LossesDataTable';
+import { useAppSelector } from '@/hooks/reduxHooks';
 
 interface IFormValues {
     client: string;
@@ -85,7 +86,9 @@ export default function Losses() {
   };
 
   const [messageApi, contextHolder] = message.useMessage();
-  const userId = auth.currentUser?.uid;
+  const {user} = useAppSelector((state) => state.userReducer);
+
+  const userId = user.uid;
 
   const dataFromProfit = async (values: IFormValues) => {
 
