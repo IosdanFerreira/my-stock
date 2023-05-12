@@ -39,7 +39,7 @@ Aqui estão as tecnologias usadas no projeto.
 
 ### 2 - Caso não tenha uma conta, pode fazer seu cadastro.
 
-![Cadastro](https://github.com/IosdanFerreira/my-stock/blob/main/public/readme/criação-de-conta.png)
+![Cadastro](https://github.com/IosdanFerreira/my-stock/blob/main/public/readme/criacao-de-conta.png)
 
 ### 3 - Caso tenha esquecido sua senha, poderá recupera-la através do seu email.
 
