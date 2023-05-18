@@ -1,0 +1,34 @@
+@import "../../../scss/variables.scss";
+
+.input__container {
+  width: 100%;
+
+  span {
+    display: block;
+    color: $text-100;
+    font-size: 15px;
+    margin-bottom: 3px;
+    font-weight: lighter;
+  }
+
+  input {
+    all: unset;
+    border: 1px solid $accent-200;
+    border-radius: 5px;
+    color: $text-200;
+    width: -webkit-fill-available;
+    padding: 8px 10px;
+    font-weight: lighter;
+    background-color: transparent;
+    font-size: 14px;
+
+    &:focus {
+      border: 1px solid $primary-100-hover;
+    }
+
+    &::placeholder {
+      font-size: 14px;
+      color: #858585 !important;
+    }
+  }
+}

@@ -17,6 +17,7 @@ import 'firebase/firestore';
 // components
 import SistemLayout from '@/components/Layout/SistemLayout';
 import InputTextLogin from '@/components/Inputs/InputTextLogin';
+import InputMoneyMask from '@/components/Inputs/InputMoneyMask';
 import { ProfitDataTable } from '@/components/ProfitDataTable';
 
 // Form
@@ -67,7 +68,8 @@ export default function Profit() {
     client: Yup.string()
       .required('Cliente é obrigatório'),
     value: Yup.string()
-      .required('Valor é obrigatório'),
+      .required('Valor é obrigatório')
+      .matches(/^R\$(((\d{1,3}\.\d{3})+)|(\d+))(,\d{2})$/, 'O valor deve conter uma vírgula e duas casas decimais. Ex: R$150,00')
   });
 
   // Exibe as mensagens de erro do formulário
@@ -102,7 +104,7 @@ export default function Profit() {
       await updateDoc(userRef, {
         entradas: arrayUnion({
           client: values.client,
-          value: values.value,
+          value: values.value.replace(/\D/g,''),
           description: values.description,
           date: formatedDate,
         }),
@@ -200,7 +202,7 @@ export default function Profit() {
                         </Form.Group>
 
                         <Form.Group className="mb-3 col-sm-6">
-                          <InputTextLogin
+                          <InputMoneyMask
                             type='text'
                             id="value"
                             name="value"

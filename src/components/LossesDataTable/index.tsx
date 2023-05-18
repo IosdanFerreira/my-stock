@@ -49,7 +49,7 @@ export function LossesDataTable({data}: ITableProps) {
       dataIndex: 'value',
       render: (value: string) => {
 
-        const formatedValue = parseFloat(value);
+        const formatedValue = (parseFloat(value) / 100);
 
         if (formatedValue > 0) {
           return (
